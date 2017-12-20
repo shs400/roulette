@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+    <title>roulette</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./assets/js/jQueryRotate.js"></script>
+    <script type="text/javascript" src="./assets/js/sRoulette.js"></script>
+    <style>
+        *{ margin:0; padding:0;}
+        img { vertical-align: top; }
+        a { text-decoration: none;}
+        li { list-style: none;}
+        body { -webkit-text-size-adjust:none; }
+
+        /*룰렛 css*/
+        .roulette-wrap { overflow:hidden; position: relative; padding:30px 0 24px; text-align: center; box-sizing: border-box; background:#889def; }
+        .roulette-txt { width:100%; text-align:center; margin-bottom: 26px; }
+        .roulette-txt img { width:205px;}
+        .roulette-wrap .roulette-box { position: relative; display: inline-block;}
+        .roulette-wrap .roulette-box:before { content:''; position: absolute; left:-20px; top:-82px; width:64px; height:157px; background:url("http://images.coocha.co.kr/mweb/imgs/promotion/roulette-bg-left.png") no-repeat left 0px; background-size:63px auto;}
+        .roulette-wrap .roulette-box:after { content:''; position: absolute; right:-17px; top:-78px; width:64px; height:157px; background:url("http://images.coocha.co.kr/mweb/imgs/promotion/roulette-bg-right.png") no-repeat right 0px; background-size:63px auto;}
+        #Sroulette{ z-index:10; width:310px; max-width:481px; }
+        #chk-arrow { position: absolute; left: 50%; top: 0; z-index: 20; width:23px; margin:-19px 0 0 -11px; }
+        .button-area { position:absolute; left:50%; top:50%; width:80px; height:80px; margin-left:-40px; margin-top:-40px; z-index:20; border-radius: 50%; text-align: center; line-height: 0; text-indent: -9999999px; background:url('http://images.coocha.co.kr/mweb/imgs/promotion/start_btn.png') no-repeat center center; background-size:80px 80px; }
+        .reset { background:#ffeb00; }
+    </style>
+</head>
+<body>
+<div class="promotion-wrap">
+    <div class="roulette-wrap" id="menu02">
+        <span class="roulette-box">
+            <img src="./assets/images/roulette.png" id="Sroulette">
+            <img src="./assets/images/roulette-arrow.png" id="chk-arrow" >
+            <div class="button-area" id="SrouletteBtn">클릭</div>
+        </span>
+    </div>
+</div>
+<script>;
+    $(function(){
+        var roulettsEvent = new Sroulette('#Sroulette', {
+            btnId : '#SrouletteBtn', // 룰렛돌리는 버튼 id
+            rouletteNum : '6', // 룰렛 갯수
+            rouletteRotateNum: '5', // 룰렛 돌아가는 회전수
+            rouletteSpeed : '1000', // 속도
+            rouletteItemName : ['1장','한번더 참여','꽝!','4장','3장','2장'], // 룰렛 상품 등록 - 반시계방향 등록
+            rouletteIteExemption : ['1','2'], // 제외처리 index - 배열이기때문에 0부터 시작
+            rouletteProbability : [25,0,0,25,25,25], // 룰렛 확률 - 반시계방향 등록
+            flag : 'Y' // 클릭 한번만 가능 'N' , 반복가능 'Y'
+        },function () {
+            this.roulette.attr('src',this.imgSrc.replace('roulette','roulette0'+this.part));
+        });
+    });
+</script>
+</body>
+</html>
